@@ -59,10 +59,16 @@ export const createInitialAdmin = async (req: Request, res: Response) => {
       success: true,
       message: 'Admin user created successfully',
     });
-  } catch (error) {
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      if (error.message.includes('exists')) {
+        return res.status(400).json({ success: false, error: error.message });
+      }
+      return res.status(500).json({ success: false, error: error.message });
+    }
     res.status(500).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to create admin',
+      error: 'Failed to create admin',
     });
   }
 };

@@ -103,6 +103,12 @@ class AuthService {
   }
 
   async createAdmin(username: string, password: string): Promise<void> {
+    // Check if user already exists
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      throw new Error('Username already exists');
+    }
+
     const hashedPassword = await bcrypt.hash(password, 12);
 
     await User.create({
