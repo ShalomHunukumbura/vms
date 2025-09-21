@@ -1,0 +1,69 @@
+import bcrypt from 'bcryptjs';
+import { User } from '../models';
+import { generateToken, TokenPayload } from '../config/jwt';
+
+export interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  token: string;
+  user: {
+    id: number;
+    username: string;
+    role: string;
+  };
+}
+
+class AuthService {
+  async login(credentials: LoginRequest): Promise<LoginResponse> {
+    const { username, password } = credentials;
+
+    // find user
+    const user = await User.findOne({ where: { username } });
+    if (!user) {
+        throw new Error('Invalid username or password');
+    }
+
+    // check password against hash
+    const isPasswordValid = await bcrypt.compare(password, user.password_hash);
+    if (!isPasswordValid) {
+        throw new Error('Invalid username or password');
+    }
+
+    // generate token
+    if (typeof user.id !== 'number') {
+        throw new Error('User id is missing or invalid');
+    }
+
+    const tokenPayload: TokenPayload = {
+        id: user.id,
+        username: user.username,
+        role: user.role,
+    };
+    const token = generateToken(tokenPayload);
+
+    return {
+        token,
+        user: {
+            id: user.id,
+            username: user.username,
+            role: user.role,
+        },
+    };
+}
+
+
+  async createAdmin(username: string, password: string): Promise<void> {
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    await User.create({
+      username,
+      password_hash: hashedPassword,
+      role: 'admin',
+    });
+  }
+}
+
+export default new AuthService();
