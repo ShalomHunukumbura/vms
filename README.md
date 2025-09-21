@@ -109,6 +109,9 @@ The Vehicle Management System (VMS) is a comprehensive web application designed 
    - Frontend: http://localhost:5173
    - Backend API: http://localhost:3001
    - Health Check: http://localhost:3001/health
+   - admin login credentials:
+      - username: admin
+      - password: admin123
 
 ### Environment Configuration
 
