@@ -41,6 +41,14 @@ export const authAPI = {
     return response.data.data!;
   },
 
+  register: async (username: string, password: string): Promise<AuthResponse> => {
+    const response = await api.post<ApiResponse<AuthResponse>>('/api/auth/register', {
+      username,
+      password,
+    });
+    return response.data.data!;
+  },
+
   createAdmin: async (username: string, password: string): Promise<void> => {
     await api.post('/api/auth/create-admin', {
       username,

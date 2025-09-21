@@ -54,12 +54,20 @@ const Header: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <Link
-                to="/login"
-                className="btn-primary px-4 py-2 rounded-md text-sm font-medium"
-              >
-                Login
-              </Link>
+              <div className="flex items-center space-x-3">
+                <Link
+                  to="/register"
+                  className="text-slate-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:bg-slate-800/50"
+                >
+                  Register
+                </Link>
+                <Link
+                  to="/login"
+                  className="btn-primary px-4 py-2 rounded-md text-sm font-medium"
+                >
+                  Login
+                </Link>
+              </div>
             )}
           </div>
         </div>

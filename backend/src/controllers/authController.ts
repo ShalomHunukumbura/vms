@@ -23,6 +23,28 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+export const register = async (req: Request, res: Response) => {
+  try {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Username and password required' });
+    }
+
+    const result = await authService.register({ username, password });
+
+    res.status(201).json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Registration failed',
+    });
+  }
+};
+
 export const createInitialAdmin = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate, Navigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { authAPI } from '../utils/api';
 import { getErrorMessage } from '../types/api-error';
@@ -94,6 +94,18 @@ const Login: React.FC = () => {
               {isLoading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-sm text-slate-400">
+              Don't have an account?{' '}
+              <Link
+                to="/register"
+                className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200"
+              >
+                Create one here
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

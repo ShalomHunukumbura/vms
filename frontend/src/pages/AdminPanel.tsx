@@ -188,7 +188,7 @@ const AdminPanel: React.FC = () => {
                                 />
                               </div>
                               <div className="ml-4">
-                                <div className="text-sm font-medium text-white">
+                                <div className="text-sm font-medium text-white  ">
                                   {vehicle.brand} {vehicle.model}
                                 </div>
                                 <div className="text-sm text-slate-400">
