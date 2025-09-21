@@ -107,6 +107,19 @@ const Login: React.FC = () => {
             </p>
           </div>
         </div>
+
+        {/* Demo Credentials Card */}
+        <div className="card-dark rounded-xl p-4 mt-4 border border-blue-500/30">
+          <div className="text-center">
+            <h3 className="text-sm font-medium text-blue-400 mb-2">
+              Demo Admin Credentials
+            </h3>
+            <div className="text-xs text-slate-300 space-y-1">
+              <p><span className="text-slate-400">Username:</span> <span className="font-mono text-blue-300">admin</span></p>
+              <p><span className="text-slate-400">Password:</span> <span className="font-mono text-blue-300">admin123</span></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
