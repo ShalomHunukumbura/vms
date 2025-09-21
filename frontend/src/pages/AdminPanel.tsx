@@ -96,22 +96,24 @@ const AdminPanel: React.FC = () => {
   return (
     <ProtectedRoute requireAdmin>
       <Layout>
-        <div className="space-y-6">
-          <div className="flex justify-between items-center">
+        <div className="space-y-8">
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-4 lg:space-y-0">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Admin Panel</h1>
-              <p className="mt-2 text-gray-600">Manage your vehicle inventory</p>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                Admin Panel
+              </h1>
+              <p className="mt-2 text-slate-300 text-lg">Manage your vehicle inventory</p>
             </div>
             <button
               onClick={handleAddVehicle}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              className="btn-primary px-6 py-3 rounded-lg font-medium"
             >
               Add New Vehicle
             </button>
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
+            <div className="bg-red-900/20 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg">
               {error}
             </div>
           )}
@@ -126,46 +128,49 @@ const AdminPanel: React.FC = () => {
           )}
 
           {loading ? (
-            <div className="flex justify-center items-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="flex justify-center items-center py-16">
+              <div className="relative">
+                <div className="animate-spin rounded-full h-16 w-16 border-4 border-slate-600 border-t-blue-500"></div>
+                <div className="absolute inset-0 rounded-full animate-pulse bg-blue-500/20"></div>
+              </div>
             </div>
           ) : (
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-              <div className="px-6 py-4 border-b border-gray-200">
-                <h2 className="text-lg font-medium text-gray-900">
+            <div className="card-dark rounded-xl overflow-hidden">
+              <div className="px-6 py-4 border-b border-slate-700">
+                <h2 className="text-xl font-semibold text-slate-200">
                   Vehicle Inventory ({vehicles?.length || 0})
                 </h2>
               </div>
 
               {!vehicles || vehicles.length === 0 ? (
-                <div className="p-6 text-center text-gray-500">
+                <div className="p-8 text-center text-slate-400">
                   No vehicles found. Add your first vehicle to get started.
                 </div>
               ) : (
                 <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                  <table className="min-w-full divide-y divide-slate-700">
+                    <thead className="bg-slate-800/50">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                           Vehicle
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                           Details
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                           Price
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                           Created
                         </th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-right text-xs font-medium text-slate-300 uppercase tracking-wider">
                           Actions
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
+                    <tbody className="divide-y divide-slate-700">
                       {vehicles?.map((vehicle) => (
-                        <tr key={vehicle.id} className="hover:bg-gray-50">
+                        <tr key={vehicle.id} className="hover:bg-slate-800/50  transition-colors duration-200">
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <div className="flex-shrink-0 h-12 w-12">
@@ -183,48 +188,48 @@ const AdminPanel: React.FC = () => {
                                 />
                               </div>
                               <div className="ml-4">
-                                <div className="text-sm font-medium text-gray-900">
+                                <div className="text-sm font-medium text-white">
                                   {vehicle.brand} {vehicle.model}
                                 </div>
-                                <div className="text-sm text-gray-500">
+                                <div className="text-sm text-slate-400">
                                   {vehicle.type}
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
+                            <div className="text-sm text-slate-200">
                               {vehicle.year} • {vehicle.color}
                             </div>
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-slate-400">
                               {vehicle.engine_size}
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm font-medium text-gray-900">
+                            <div className="text-sm font-bold text-green-400">
                               ${vehicle.price.toLocaleString()}
                             </div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
                             {new Date(vehicle.created_at).toLocaleDateString()}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
                             <button
                               onClick={() => handleRegenerateDescription(vehicle)}
-                              className="text-green-600 hover:text-green-900"
+                              className="text-green-400 hover:text-green-300 transition-colors duration-200 font-medium"
                               title="Regenerate AI Description"
                             >
                               AI
                             </button>
                             <button
                               onClick={() => handleEditVehicle(vehicle)}
-                              className="text-blue-600 hover:text-blue-900"
+                              className="text-blue-400 hover:text-blue-300 transition-colors duration-200 font-medium"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDeleteVehicle(vehicle.id)}
-                              className="text-red-600 hover:text-red-900"
+                              className="text-red-400 hover:text-red-300 transition-colors duration-200 font-medium"
                             >
                               Delete
                             </button>

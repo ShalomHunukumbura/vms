@@ -110,7 +110,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               value={formData.type}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               {vehicleTypes.map(type => (
                 <option key={type} value={type}>
@@ -131,7 +131,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               value={formData.brand}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-500"
               placeholder="Toyota, Honda, BMW..."
             />
           </div>
@@ -147,7 +147,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               value={formData.model}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-500"
               placeholder="Camry, Civic, X5..."
             />
           </div>
@@ -163,7 +163,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               value={formData.color}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-500"
               placeholder="Red, Blue, White..."
             />
           </div>
@@ -179,7 +179,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               value={formData.engine_size}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-500"
               placeholder="2.0L, 3.5L V6, Electric..."
             />
           </div>
@@ -197,7 +197,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               required
               min="1900"
               max={new Date().getFullYear() + 1}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-500"
             />
           </div>
 
@@ -214,7 +214,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               required
               min="0"
               step="100"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-500"
             />
           </div>
 
@@ -228,7 +228,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
               multiple
               accept="image/*"
               onChange={handleImageChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-500"
             />
             <p className="text-xs text-gray-500 mt-1">
               Select up to 5 images (JPG, PNG, GIF)
@@ -256,7 +256,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({
             value={formData.description}
             onChange={handleInputChange}
             rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border text-gray-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-gray-500"
             placeholder="Enter vehicle description or generate one using AI..."
           />
         </div>

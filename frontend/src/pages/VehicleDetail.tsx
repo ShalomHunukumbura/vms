@@ -117,7 +117,7 @@ const VehicleDetail: React.FC = () => {
               <span className="inline-block px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 rounded-full mb-2">
                 {vehicle.type}
               </span>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-white">
                 {vehicle.brand} {vehicle.model}
               </h1>
               <p className="text-2xl font-bold text-blue-600 mt-2">
@@ -149,26 +149,13 @@ const VehicleDetail: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            {/* Description */}
-            {vehicle.description && (
-              <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  Description
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {vehicle.description}
-                </p>
-              </div>
-            )}
-
             {/* AI Description */}
             {vehicle.ai_description && (
               <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                <h3 className="text-lg font-medium text-white mb-2">
                   AI Generated Description
                 </h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-white leading-relaxed">
                   {vehicle.ai_description}
                 </p>
               </div>

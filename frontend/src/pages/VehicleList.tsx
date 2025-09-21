@@ -67,10 +67,12 @@ const VehicleList: React.FC = () => {
 
   return (
     <Layout>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900">Vehicle Catalog</h1>
-          <p className="mt-2 text-gray-600">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-4">
+            Vehicle Catalog
+          </h1>
+          <p className="text-xl text-slate-300">
             Discover our collection of quality vehicles
           </p>
         </div>
@@ -82,25 +84,28 @@ const VehicleList: React.FC = () => {
         />
 
         {loading ? (
-          <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="flex justify-center items-center py-16">
+            <div className="relative">
+              <div className="animate-spin rounded-full h-16 w-16 border-4 border-slate-600 border-t-blue-500"></div>
+              <div className="absolute inset-0 rounded-full animate-pulse bg-blue-500/20"></div>
+            </div>
           </div>
         ) : error ? (
-          <div className="text-center py-12">
-            <div className="text-red-600 mb-4">{error}</div>
+          <div className="text-center py-16 card-dark rounded-xl p-8">
+            <div className="text-red-400 mb-6 text-lg">{error}</div>
             <button
               onClick={fetchVehicles}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="btn-primary px-6 py-3 rounded-lg"
             >
               Try Again
             </button>
           </div>
         ) : !vehicles || vehicles.length === 0 ? (
-          <div className="text-center py-12">
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+          <div className="text-center py-16 card-dark rounded-xl p-8">
+            <h3 className="text-xl font-semibold text-slate-200 mb-3">
               No vehicles found
             </h3>
-            <p className="text-gray-600">
+            <p className="text-slate-400">
               Try adjusting your filters to see more results.
             </p>
           </div>
