@@ -1,4 +1,4 @@
-import { Op } from 'sequelize';
+import { Op, fn, col } from 'sequelize';
 import { Vehicle } from '../models';
 import aiService from './aiService';
 
@@ -74,9 +74,9 @@ class VehicleService {
 
     // Apply filters
     if (type) where.type = type;
-    if (brand) where.brand = { [Op.iLike]: `%${brand}%` };
-    if (model) where.model = { [Op.iLike]: `%${model}%` };
-    if (color) where.color = { [Op.iLike]: `%${color}%` };
+    if (brand) where.brand = { [Op.like]: `%${brand}%` };
+    if (model) where.model = { [Op.like]: `%${model}%` };
+    if (color) where.color = { [Op.like]: `%${color}%` };
 
     if (minPrice || maxPrice) {
       where.price = {};
@@ -93,11 +93,11 @@ class VehicleService {
     // Global search
     if (search) {
       where[Op.or] = [
-        { brand: { [Op.iLike]: `%${search}%` } },
-        { model: { [Op.iLike]: `%${search}%` } },
-        { color: { [Op.iLike]: `%${search}%` } },
-        { description: { [Op.iLike]: `%${search}%` } },
-        { ai_description: { [Op.iLike]: `%${search}%` } },
+        { brand: { [Op.like]: `%${search}%` } },
+        { model: { [Op.like]: `%${search}%` } },
+        { color: { [Op.like]: `%${search}%` } },
+        { description: { [Op.like]: `%${search}%` } },
+        { ai_description: { [Op.like]: `%${search}%` } },
       ];
     }
 
@@ -111,15 +111,11 @@ class VehicleService {
     const totalPages = Math.ceil(count / limit);
 
     return {
-      vehicles,
-      pagination: {
-        currentPage: page,
-        totalPages,
-        totalItems: count,
-        limit,
-        hasNext: page < totalPages,
-        hasPrev: page > 1,
-      },
+      items: vehicles,
+      currentPage: page,
+      totalPages,
+      totalItems: count,
+      limit,
     };
   }
 
