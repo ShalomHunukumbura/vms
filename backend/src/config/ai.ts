@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export type AIProvider = 'grok' | 'groq' | 'gemini' | 'ollama';
+export type AIProvider = 'openrouter' | 'grok' | 'groq' | 'gemini' | 'ollama';
 
 export interface AIConfig {
     provider: AIProvider;
@@ -9,13 +9,19 @@ export interface AIConfig {
     model: string;
 }
 
-// Get AI provider from environment or default to 'grok'
+// Get AI provider from environment or default to 'openrouter'
 const getAIProvider = (): AIProvider => {
     const provider = process.env.AI_PROVIDER as AIProvider;
-    return provider || 'grok';
+    return provider || 'openrouter';
 };
 
 const configs: Record<AIProvider, AIConfig> = {
+    openrouter: {
+        provider: 'openrouter',
+        apiKey: process.env.OPENROUTER_API_KEY,
+        baseURL: 'https://openrouter.ai/api/v1',
+        model: 'x-ai/grok-4-fast:free'
+    },
     grok: {
         provider: 'grok',
         apiKey: process.env.GROK_API_KEY,

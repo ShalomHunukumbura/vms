@@ -151,11 +151,11 @@ const VehicleDetail: React.FC = () => {
             </div>
             {/* AI Description */}
             {vehicle.ai_description && (
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
                   AI Generated Description
                 </h3>
-                <p className="text-white leading-relaxed">
+                <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">
                   {vehicle.ai_description}
                 </p>
               </div>

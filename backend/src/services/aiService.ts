@@ -65,6 +65,7 @@ Don't miss this opportunity to own a vehicle that combines cutting-edge technolo
       let response;
 
       switch (aiConfig.provider) {
+        case 'openrouter':
         case 'grok':
         case 'groq':
           response = await aiClient.post('/chat/completions', {
@@ -119,6 +120,7 @@ Don't miss this opportunity to own a vehicle that combines cutting-edge technolo
 
       // Extract description based on provider response format
       switch (aiConfig.provider) {
+        case 'openrouter':
         case 'grok':
         case 'groq':
           description = aiResponse.choices?.[0]?.message?.content?.trim();
